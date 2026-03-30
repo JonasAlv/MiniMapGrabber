@@ -12,7 +12,6 @@ local BLIZZ_NAMES = {
     ["MiniMapBattlefieldFrame"] = "PvP / BG Status", ["MiniMapWorldMapButton"] = "World Map Button",
     ["GameTimeFrame"] = "Calendar", ["TimeManagerClockButton"] = "Clock",
     ["MiniMapLFGFrame"] = "Dungeon Finder (Eye)", ["MiniMapInstanceDifficulty"] = "Dungeon Difficulty",
-    ["MiniMapVoiceChatFrame"] = "Voice Chat",
 }
 
 local FORBIDDEN = {
