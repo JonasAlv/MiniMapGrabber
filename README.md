@@ -4,6 +4,9 @@
 
 ![MiniMapGrabber In-Game](preview.png)
 
+![MiniMapGrabber In-Game](menu.png)
+
+
 ### install
 [Click here to download](https://github.com/JonasAlv/MiniMapGrabber/archive/refs/heads/main.zip) or the download button present on the "Code" button above.
 Extract and rename **MiniMapGrabber-main** to **"MiniMapGrabber"** then copy to your WoW's addon folder
@@ -12,3 +15,7 @@ Extract and rename **MiniMapGrabber-main** to **"MiniMapGrabber"** then copy to 
 * **Left-Click** – Toggles the menu open or closed.
 * **Right-Click** – Opens the configuration menu to lock the UI or select which buttons to grab/ignore.
 * **Drag** – Move the MMG button on your screen (clamped to prevent leaving the game window).
+
+### To-Do
+* simplify addon names for the menu
+* find bugs?
