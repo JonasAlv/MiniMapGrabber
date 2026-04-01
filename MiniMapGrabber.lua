@@ -2,16 +2,18 @@ local addonName = "MiniMapGrabber"
 local BUTTON_SIZE = 33
 local PADDING = 5
 
--- MMG_ToggleButton config i use instead of an icon(for the button)
+-- MMG_ToggleButton style i use instead of an icon(for the button), to make it look like it's part of the default UI
 local BG_COLOR = { r = 0.4, g = 0.2, b = 0.1 }
 local TEXT_LABEL = "MMG"
 local TEXT_COLOR = { r = 1, g = 0.82, b = 0 }
 
+-- some default blizz frames i saw(tested on some wotlk based server)
 local BLIZZ_NAMES = {
     ["MiniMapTracking"] = "Tracking", ["MiniMapMailFrame"] = "Mail Icon",
     ["MiniMapBattlefieldFrame"] = "PvP / BG Status", ["MiniMapWorldMapButton"] = "World Map Button",
     ["GameTimeFrame"] = "Calendar", ["TimeManagerClockButton"] = "Clock",
     ["MiniMapLFGFrame"] = "Dungeon Finder (Eye)", ["MiniMapInstanceDifficulty"] = "Dungeon Difficulty",
+    ["MiniMapVoiceChatFrame"] = "Voice Chat",
 }
 
 local FORBIDDEN = {
@@ -158,8 +160,17 @@ local function CreateMenu()
 
     for name in pairs(allButtons) do
         if not BLIZZ_NAMES[name] then
+            local displayName = name
+            local trash = { "LibDBIcon10_", "LibDBIcon_", "LDBIcon_", "LDB_", 
+                            "FuBarPlugin-3.0_", "FuBarPlugin-2.0_", "FuBar_",
+                            "MinimapButton", "MiniMapButton", "Minimap", "MiniMap", "Button",
+                            "Launcher", "Broker", "Icon"}
+            for _, pattern in ipairs(trash) do displayName = displayName:gsub(pattern, "") end
+            displayName = displayName:gsub("_", " "):match("^%s*(.-)%s*$")
+            if displayName == "" then displayName = name end
+
             table.insert(menu, {
-                text = name, checked = (MMG_CustomSettings.settings[name] ~= false), keepShownOnClick = true,
+                text = displayName, checked = (MMG_CustomSettings.settings[name] ~= false), keepShownOnClick = true,
                 func = function()
                     MMG_CustomSettings.settings[name] = not (MMG_CustomSettings.settings[name] ~= false)
                     RefreshMenu()
