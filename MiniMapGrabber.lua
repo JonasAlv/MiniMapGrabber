@@ -97,7 +97,7 @@ local function GrabMinimapButtons()
         local children = { parent:GetChildren() }
         for _, child in ipairs(children) do
             local name = child:GetName()
-            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:match("^pfPin") and not processedButtons[name] then
+            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:match("^pfMiniMapPin") and not processedButtons[name] then
                 processedButtons[name] = true
                 local isBlizz = BLIZZ_NAMES[name] ~= nil
                 local userPref = MMG_CustomSettings.settings[name]
