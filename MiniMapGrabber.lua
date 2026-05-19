@@ -97,7 +97,7 @@ local function GrabMinimapButtons()
         local children = { parent:GetChildren() }
         for _, child in ipairs(children) do
             local name = child:GetName()
-            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not processedButtons[name] then
+            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:match("^pfPin") and not processedButtons[name] then
                 processedButtons[name] = true
                 local isBlizz = BLIZZ_NAMES[name] ~= nil
                 local userPref = MMG_CustomSettings.settings[name]
@@ -172,7 +172,8 @@ local function PopulateRightClickMenu()
     for _, parent in ipairs({Minimap, MMG_ButtonMenu}) do
         for _, child in ipairs({parent:GetChildren()}) do
             local name = child:GetName()
-            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:find("MinimapZoom") and not BLIZZ_NAMES[name] then
+            -- Added: not name:match("^pfPin") keeps them out of the right-click list
+            if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:find("MinimapZoom") and not name:match("^pfPin") and not BLIZZ_NAMES[name] then
                 local found = false
                 for _, item in ipairs(addonList) do if item.name == name then found = true break end end
                 if not found then table.insert(addonList, { name = name, display = GetCleanName(name) }) end
