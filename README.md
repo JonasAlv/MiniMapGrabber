@@ -8,7 +8,7 @@
 
 
 ### install
-[Click here to download](https://github.com/JonasAlv/MiniMapGrabber/archive/refs/heads/main.zip) or the download button present on the "Code" button above.
+[Click here to download](https://github.com/JonasAlv/MiniMapGrabber/archive/refs/heads/main.zip)
 Extract and rename **MiniMapGrabber-main** to **"MiniMapGrabber"** then copy to your WoW's addon folder
 ### Commands
 * **`/mmg reset`** – reset to the default position.
