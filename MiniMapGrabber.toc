@@ -2,7 +2,7 @@
 ## Title: MiniMapGrabber
 ## Notes: Consolidates all minimap buttons into one toggleable button.
 ## Author: @jonasalv @narchda
-## Version: 1.0.1
+## Version: 1.0.2
 ## SavedVariablesPerCharacter: MMG_CustomSettings
 
 MiniMapGrabber.lua
