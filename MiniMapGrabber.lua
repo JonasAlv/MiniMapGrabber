@@ -3,6 +3,26 @@ local BUTTON_SIZE = 33
 local PADDING = 5
 local isRefreshing = false
 
+-- Polyfill for C_Timer/ Fix C_Timer bug
+if not C_Timer then
+    C_Timer = {}
+    local tickerFrame = CreateFrame("Frame")
+    local timers = {}
+    tickerFrame:SetScript("OnUpdate", function(self, elapsed)
+        for i = #timers, 1, -1 do
+            timers[i].duration = timers[i].duration - elapsed
+            if timers[i].duration <= 0 then
+                local func = timers[i].func
+                table.remove(timers, i)
+                func()
+            end
+        end
+    end)
+    function C_Timer.After(duration, func)
+        table.insert(timers, {duration = duration, func = func})
+    end
+end
+
 local BG_COLOR = { r = 0.4, g = 0.2, b = 0.1 }
 local TEXT_LABEL = "MMG"
 local TEXT_COLOR = { r = 1, g = 0.82, b = 0 }
@@ -97,7 +117,6 @@ local function GrabMinimapButtons()
         local children = { parent:GetChildren() }
         for _, child in ipairs(children) do
             local name = child:GetName()
-            -- Updated: Correct internal frame name for pfQuest pins
             if child:IsObjectType("Button") and name and not FORBIDDEN_FRAMES[name] and not name:match("^pfMiniMapPin") and not processedButtons[name] then
                 processedButtons[name] = true
                 local isBlizz = BLIZZ_NAMES[name] ~= nil
