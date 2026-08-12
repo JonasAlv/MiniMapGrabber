@@ -2,9 +2,8 @@
 
 **MiniMapGrabber** is a lightweight utility for WoW 3.3.5 to grab minimap buttons(addons or default) and hide them into a Menu(single minimap button you can left-click to show)
 
-![MMG In-Game](button_menu.png)
+<img width="414" height="467" alt="image" src="https://github.com/user-attachments/assets/db2386e9-8335-49cf-b21c-d04205147ccc" />
 
-![MMG In-Game](settings_menu.png)
 
 
 ### install
